@@ -1,10 +1,25 @@
+# two goals:
+# 1. install via pipx
+#    pipx install --index-url https://test.pypi.org/simple hello-tls-ben==0.3.10
+# 2. install w/ pyopenssl as optional
+
+# steps
+# python -m build
+# twine upload --repository-url https://test.pypi.org/legacy/ --username __token__ --password $PYPI_TEST_TOKEN dist/*
+
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=61.0", "wheel", "toml"]
 build-backend = "setuptools.build_meta"
 
+#[tool.pipx]
+#main = "hello_tls_ben:main"
+#packages = [
+#    { name = "hello_tls_ben", extras = ["pyopenssl"] },
+#]
+
 [project]
-name = "hello_tls"
-version = "0.3.2"
+name = "hello_tls_ben"
+version = "0.3.11"
 authors = [
   { name="BoppreH", email="github@boppreh.com" },
 ]
@@ -12,14 +27,27 @@ description = "Create TLS Client Hello messages and scan server capabilities"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-    "pyOpenSSL>=23.0.0"
+
 ]
+#dependencies = [
+#    { python = ">=3.9", package = "pyOpenSSL", version = ">=23.0.0", extra = "pyopenssl" },
+#]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
 
+[project.scripts]
+hello_tls = "hello_tls:__main__"
+
+#[project.entry-points.main]
+#main = "hello_tls_ben:main"
+
+[project.optional-dependencies]
+pyopenssl = [ "pyOpenSSL" ]
+
 [project.urls]
 "Homepage" = "https://github.com/boppreh/hello_tls"
 "Bug Tracker" = "https://github.com/boppreh/hello_tls/issues"
+
