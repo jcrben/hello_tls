@@ -19,7 +19,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hello_tls_ben"
-version = "0.3.11"
+version = "0.3.12"
 authors = [
   { name="BoppreH", email="github@boppreh.com" },
 ]
