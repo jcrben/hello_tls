@@ -19,7 +19,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hello_tls_ben"
-version = "0.3.12"
+version = "0.3.13"
 authors = [
   { name="BoppreH", email="github@boppreh.com" },
 ]
@@ -27,7 +27,7 @@ description = "Create TLS Client Hello messages and scan server capabilities"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-
+  "pyOpenSSL>=23.0.0"
 ]
 #dependencies = [
 #    { python = ">=3.9", package = "pyOpenSSL", version = ">=23.0.0", extra = "pyopenssl" },
@@ -44,8 +44,8 @@ hello_tls = "hello_tls:__main__"
 #[project.entry-points.main]
 #main = "hello_tls_ben:main"
 
-[project.optional-dependencies]
-pyopenssl = [ "pyOpenSSL" ]
+#[project.optional-dependencies]
+#pyopenssl = [ "pyOpenSSL>=23.0.0" ]
 
 [project.urls]
 "Homepage" = "https://github.com/boppreh/hello_tls"
